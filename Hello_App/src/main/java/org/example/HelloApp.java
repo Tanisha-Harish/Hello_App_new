@@ -1,21 +1,25 @@
 package org.example;
 
 public class HelloApp {
-    public static void main(String[] args) {
+        public static void main(String[] args) {
 
-        if (args.length == 0) {
-            System.out.println("Hello, World!");
-        } else {
+            // Case 1: No arguments → default message
+            if (args.length == 0) {
+                System.out.println("Hello, World!");
+            } else {
+                // Use StringBuilder for efficient string concatenation
+                StringBuilder nameBuilder = new StringBuilder();
 
-            StringBuilder sb = new StringBuilder();
+                // Enhanced for loop to process all arguments
+                for (String name : args) {
+                    nameBuilder.append(name).append(", ");
+                }
 
-            for (String name : args) {
-                sb.append(name).append(", ");
+                // Remove trailing ", " using substring
+                if (nameBuilder.length() > 0) {
+                    String names = nameBuilder.substring(0, nameBuilder.length() - 2);
+                    System.out.println("Hello, " + names + "!");
+                }
             }
-
-            sb.setLength(sb.length() - 2);
-
-            System.out.println("Hello, " + sb.toString() + "!");
         }
     }
-}
